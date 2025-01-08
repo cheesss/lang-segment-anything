@@ -5,7 +5,7 @@ from hydra.utils import instantiate
 from omegaconf import OmegaConf
 from sam2.automatic_mask_generator import SAM2AutomaticMaskGenerator
 from sam2.sam2_image_predictor import SAM2ImagePredictor
-
+from typing import Union
 from lang_sam.models.utils import get_device_type
 
 DEVICE = torch.device(get_device_type())
@@ -38,7 +38,7 @@ SAM_MODELS = {
 
 
 class SAM:
-    def build_model(self, sam_type: str, ckpt_path: str | None = None):
+    def build_model(self, sam_type: str, ckpt_path: Union[str, None] = None):
         self.sam_type = sam_type
         self.ckpt_path = ckpt_path
         cfg = compose(config_name=SAM_MODELS[self.sam_type]["config"], overrides=[])

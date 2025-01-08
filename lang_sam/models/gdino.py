@@ -1,7 +1,7 @@
 import torch
 from PIL import Image
 from transformers import AutoModelForZeroShotObjectDetection, AutoProcessor
-
+from typing import Union
 from lang_sam.models.utils import get_device_type
 
 device_type = get_device_type()
@@ -18,7 +18,7 @@ class GDINO:
     def __init__(self):
         self.build_model()
 
-    def build_model(self, ckpt_path: str | None = None):
+    def build_model(self, ckpt_path: Union[str, None] = None):
         model_id = "IDEA-Research/grounding-dino-base"
         self.processor = AutoProcessor.from_pretrained(model_id)
         self.model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).to(

@@ -8,7 +8,7 @@ from PIL import Image
 from lang_sam import LangSAM
 from lang_sam.utils import draw_image
 
-PORT = 8000
+PORT = 8002
 
 
 class LangSAMAPI(ls.LitAPI):
